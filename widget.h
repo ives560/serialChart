@@ -7,6 +7,8 @@
 #include <QtCharts/QSplineSeries>
 #include <QtCharts/QValueAxis>
 
+#include "customtablemodel.h"
+
 QT_CHARTS_USE_NAMESPACE
 
 namespace Ui {
@@ -26,6 +28,7 @@ private:
     QSplineSeries *m_series;
     QChart *chart;
     QValueAxis *m_axis;
+    CustomTableModel *customModel;
 };
 
 #endif // WIDGET_H

@@ -7,6 +7,11 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    customModel = new CustomTableModel();
+    ui->tableView->setModel(customModel);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
     m_series = new QSplineSeries();
     QPen green(Qt::red);
     green.setWidth(3);
