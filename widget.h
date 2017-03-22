@@ -3,6 +3,12 @@
 
 #include <QWidget>
 
+#include <QtCharts/QChart>
+#include <QtCharts/QSplineSeries>
+#include <QtCharts/QValueAxis>
+
+QT_CHARTS_USE_NAMESPACE
+
 namespace Ui {
 class Widget;
 }
@@ -17,6 +23,9 @@ public:
 
 private:
     Ui::Widget *ui;
+    QSplineSeries *m_series;
+    QChart *chart;
+    QValueAxis *m_axis;
 };
 
 #endif // WIDGET_H
