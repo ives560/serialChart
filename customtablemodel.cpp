@@ -63,9 +63,9 @@ void CustomTableModel::addRow()
     {
         QModelIndex idx = this->index(count,k);
         if (k % 2 == 0)
-            setData(idx, (count+k) * 50 + qrand() % 20,Qt::EditRole);
+            setData(idx, count*2,Qt::EditRole);
         else
-            setData(idx, qrand() % 100,Qt::EditRole);
+            setData(idx, qrand() % 10,Qt::EditRole);
     }
 
 }

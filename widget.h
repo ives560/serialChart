@@ -8,6 +8,7 @@
 #include <QtCharts/QValueAxis>
 
 #include "customtablemodel.h"
+#include "customchart.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -22,6 +23,9 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Widget *ui;

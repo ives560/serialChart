@@ -4,3 +4,8 @@ CustomChart::CustomChart()
 {
 
 }
+
+CustomChart::~CustomChart()
+{
+
+}
