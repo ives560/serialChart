@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui charts
+QT       += core gui charts serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,10 +26,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         widget.cpp \
     customtablemodel.cpp \
-    customchart.cpp
+    customchart.cpp \
+    mainwindow.cpp \
+    settingsdialog.cpp
 
 HEADERS  += widget.h \
     customtablemodel.h \
-    customchart.h
+    customchart.h \
+    mainwindow.h \
+    settingsdialog.h
 
-FORMS    += widget.ui
+FORMS    += widget.ui \
+    mainwindow.ui \
+    settingsdialog.ui
+
+RESOURCES += \
+    serialchart.qrc
+
