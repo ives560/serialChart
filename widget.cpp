@@ -1,6 +1,8 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+#include <QtCharts/QVXYModelMapper>
+
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -8,36 +10,38 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
 
     customModel = new CustomTableModel();
+
     ui->tableView->setModel(customModel);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
+
+    //
+    chart = new QChart;
+    chart->legend()->hide();
+    chart->setAnimationOptions(QChart::AllAnimations);
+
+    //
     m_series = new QSplineSeries();
     QPen green(Qt::red);
     green.setWidth(3);
     m_series->setPen(green);
 
-    m_series->append(0, 6);
-    m_series->append(2, 4);
-    m_series->append(3, 8);
-    m_series->append(7, 4);
-    m_series->append(10, 5);
-
-    m_axis = new QValueAxis;
-    m_axis->setTickCount(5);
-
-    chart = new QChart();
-    chart->legend()->hide();
-    chart->setAnimationOptions(QChart::AllAnimations);
+    //
+    QVXYModelMapper *mapper = new QVXYModelMapper(this);
+    mapper->setXColumn(0);
+    mapper->setYColumn(1);
+    mapper->setSeries(m_series);
+    mapper->setModel(customModel);
     chart->addSeries(m_series);
-    chart->setTitle("Chart Example");
+
+    //
     chart->createDefaultAxes();
-    chart->axisY()->setRange(0, 10);
-    chart->setAxisX(m_axis,m_series);
-
-
     ui->chartView->setChart(chart);
     ui->chartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartView->setMinimumSize(640, 480);
+
+
 }
 
 Widget::~Widget()

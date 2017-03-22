@@ -46,9 +46,9 @@ CustomTableModel::CustomTableModel(QObject *parent) :
         QVector<qreal>* dataVec = new QVector<qreal>(m_columnCount);
         for (int k = 0; k < dataVec->size(); k++) {
             if (k % 2 == 0)
-                dataVec->replace(k, i * 50 + qrand() % 20);
+                dataVec->replace(k, i*2);
             else
-                dataVec->replace(k, qrand() % 100);
+                dataVec->replace(k, qrand() % 10);
         }
         m_data.append(dataVec);
     }
